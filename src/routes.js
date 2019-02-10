@@ -10,6 +10,8 @@ import user from './views/nav1/user.vue'
 import Page5 from './views/nav2/TinymceDemo.vue'
 import Page6 from './views/nav3/Page6.vue'
 import echarts from './views/charts/echarts.vue'
+import NewBill from './views/nav1/NewBill.vue'
+import EditBill from './views/nav1/EditBill.vue'
 
 
 let routes = [
@@ -37,14 +39,14 @@ let routes = [
         name: '',
         hidden: true
     },
-    //{ path: '/main', component: Main },
     {
         path: '/',
         component: Home,
         name: '导航一',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            { path: '/main', component: Main, name: '主页', hidden: true },
+            { path: '/new_bill', component: NewBill, name: '新建账单' },
+            { path: '/edit_bill', component: EditBill, name: '查看账单' },
             { path: '/table', component: Table, name: 'Table' },
             { path: '/form', component: Form, name: 'Form' },
             { path: '/user', component: user, name: '列表' },
