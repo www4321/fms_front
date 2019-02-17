@@ -35,7 +35,7 @@
 					name:'',
 					money: "0.0",
 					type: '',
-					date: '',
+					date: new Date(),
 				},
                 types:[],
                 bill_rules:{
@@ -79,10 +79,10 @@
                 })
 			},
             onCancel(){
-			    this.bill_form.name = "";
-			    this.bill_form.type = "饮食";
-			    this.bill_form.date = "";
-			    this.bill_form.money = "0.0";
+			    this.bill_form.name = '';
+			    this.bill_form.type = '饮食';
+			    this.bill_form.date = new Date();
+			    this.bill_form.money = '0.0';
 			},
 			getTypes() {
                 getConsumeTypes(null).then(result =>{

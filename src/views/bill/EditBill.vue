@@ -271,9 +271,9 @@
 				this.addFormVisible = true;
 				this.addForm = {
                     name:'',
-                    money: "0.0",
-                    type: '',
-                    date: '',
+                    money: '0.0',
+                    type: '饮食',
+                    date: new Date(),
 				};
 			},
 			//编辑
@@ -384,7 +384,6 @@
                             obj.type = item;
                             this.types.push(obj);
                         })
-                        this.addForm.type = "饮食"
                     }
                 })
 
