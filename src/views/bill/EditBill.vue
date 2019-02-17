@@ -256,12 +256,14 @@
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
-                console.log("edit id is:", row.id);
+                console.log("edit is:", row);
 				this.editFormVisible = true;
 				this.editForm.name = row.consumeInfo;
-				this.editForm.money = "12.0"
+				this.editForm.money = row.money;
 				this.editForm.type = row.consumeType;
 				this.editForm.id = row.id;
+                this.editForm.date = new Date(row.consumeCreate);
+
 			},
 			//显示新增界面
 			handleAdd: function () {
@@ -294,10 +296,10 @@
                                     });
                                     this.$refs['editForm'].resetFields();
 								}
-                                this.editFormVisible = false;
-                                this.currentPage = 1
-                                this.getBillList(this.currentPage);
 							});
+                            this.editFormVisible = false;
+                            this.currentPage = 1
+                            this.getBillList(this.currentPage);
 						});
 					}
 				});
@@ -343,7 +345,6 @@
 					let param = { ids: ids };
 					console.log("ids:", ids)
                     batchRemoveBill(param).then((result) => {
-						this.listLoading = false;
                         let { errCode, errMsg, data } = result;
                         if(errCode != 0){
                             console.log("http request err. errMsg:{}", errMsg)
@@ -352,10 +353,11 @@
                                 message: '删除成功',
                                 type: 'success'
                             });
-                            this.currentPage = 1;
-                            this.getBillList(this.currentPage);
 						}
 					});
+                    this.listLoading = false;
+                    this.currentPage = 1;
+                    this.getBillList(this.currentPage);
 				}).catch(() => {
 
 				});
@@ -391,10 +393,10 @@
                 let date = new Date(timestamp) //时间戳为10位需*1000，时间戳为13位的话不需乘1000
                 let Y = date.getFullYear() + '-'
                 let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-'
-                let D = date.getDate() + ' '
-                let h = date.getHours() + ':'
-                let m = date.getMinutes() + ':'
-                let s = date.getSeconds()
+                let D = (date.getDate() < 10 ? ('0'+ date.getDate()):(date.getDate())) + ' '
+                let h = (date.getHours() < 10 ? ('0'+ date.getHours()):(date.getHours())) + ':'
+                let m = (date.getMinutes() < 10 ? ('0'+ date.getMinutes()):(date.getMinutes())) + ':'
+                let s = date.getSeconds() < 10 ? ('0'+ date.getSeconds()):(date.getSeconds())
                 return Y+M+D+h+m+s
             }
 		},
