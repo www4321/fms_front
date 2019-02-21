@@ -57,15 +57,12 @@
         var _this = this;
         this.$refs.ruleForm2.validate((valid) => {
           if (valid) {
-            //_this.$router.replace('/table');
             this.logining = true;
-            //NProgress.start();
             var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
             console.log(qs.stringify(loginParams));
             requestLogin(qs.stringify(loginParams)).then(result => {
               console.log("www1234")
               this.logining = false;
-              // let { msg, code, user } = data; // mock
               let { errCode, errMsg, data } = result;
               console.log(errCode);
               console.log(errMsg)
@@ -76,7 +73,7 @@
                 });
               } else {
                 sessionStorage.setItem('user', JSON.stringify(result));
-                this.$router.push({ path: '/table' });
+                this.$router.push({ path: '/new_bill' });
               }
             });
           } else {

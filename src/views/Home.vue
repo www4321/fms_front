@@ -59,20 +59,10 @@
 	export default {
 		data() {
 			return {
-				sysName:'VUEADMIN',
+				sysName:'FMS',
 				collapsed:false,
 				sysUserName: '',
-				sysUserAvatar: '',
-				form: {
-					name: '',
-					region: '',
-					date1: '',
-					date2: '',
-					delivery: false,
-					type: [],
-					resource: '',
-					desc: ''
-				}
+				sysUserAvatar: ''
 			}
 		},
 		methods: {
@@ -106,8 +96,10 @@
 			var user = sessionStorage.getItem('user');
 			if (user) {
 				user = JSON.parse(user);
-				this.sysUserName = user.name || '';
-				this.sysUserAvatar = user.avatar || '';
+                //console.log("home user:",user);
+				this.sysUserName = user.name || 'www1234';
+				this.sysUserAvatar = user.avatar || './static/img/user.png';
+                //console.log("home sysUserName:",user,user.name,user.avatar);
 			}
 
 		}

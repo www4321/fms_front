@@ -16,6 +16,13 @@ export const batchRemoveBill = params => { return axios.get(`http://127.0.0.1:80
 
 export const updateConsumeBill = params => { return axios.post(`http://127.0.0.1:8081/bill/update_bill`,params,{headers: { 'Content-Type': 'application/json'}}).then(res => res.data); };
 
+export const chartsBillYearMonth = params => { return axios.get(`http://127.0.0.1:8081/bill/charts_bill/year_month`, { params: params }).then(res => res.data); };
+
+export const chartsBillYear= params => { return axios.get(`http://127.0.0.1:8081/bill/charts_bill/year`, { params: params }).then(res => res.data); };
+
+
+
+
 
 export const getUserList = params => { return axios.get(`${base}/user/list`, { params: params }); };
 
